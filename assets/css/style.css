@@ -154,8 +154,16 @@ body {
 	border-bottom: 2px solid #656b67;
 }
 
-span {
+.current-user-atk, 
+.current-enemy-atk {
 	font-size: 25px;
+	color: red;
+}
+
+.current-user-hp, 
+.current-enemy-hp {
+	font-size: 25px;
+	color: #00FF00;
 }
 
 
