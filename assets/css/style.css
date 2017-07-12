@@ -1,0 +1,98 @@
+* {border: 1px solid black;}
+
+@font-face { font-family: Thrones; src: url('../thrones.ttf'); } 
+
+body {
+	font-family: Thrones;
+	/*color: #FFF;
+	background: url("../images/throne.png");*/
+
+
+}
+
+.main-title, .sub-title, .billboard {
+	text-align: center;
+}
+
+.main-title {
+	font-size: 40px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.sub-title {
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.billboard {
+	font-size: 20px;
+	margin: 5px 0 5px 0;
+}
+
+.arena, .holding-area, .battleground {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.holding-area {
+	width: 30%;
+	border: 5px groove #FFF;
+}
+
+.holding-img {
+	max-width: 200px;
+}
+
+.battleground {
+	display: flex;
+	width: 60%;	
+	border: 5px groove #FFF;
+}
+
+
+.btn-div{
+	display: flex;
+	align-content: center;
+	background: #000;
+}
+
+.user-fighter, .enemy-fighter {
+	display: flex;
+	justify-content: center;
+	width: 45%;
+}
+
+.battleground-title, .stats {
+	text-align: center;
+}
+
+.battleground-title {
+	font-size: 20px;
+}
+
+.battleground-img {
+	display: block;
+
+	margin: 0 auto;
+	width: 100%;
+	min-width: 300px;
+}
+
+.btn-div:hover {
+	background: #F00;
+	border: 5px outset #FF7E79;
+
+}
+
+.atk-txt {
+	
+	font-size: 10px;
+	margin: 0;
+	padding: 0;
+}
+
+
+

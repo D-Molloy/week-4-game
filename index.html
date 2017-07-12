@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game of Thrones</title>
+	<link rel="shortcut icon" type="img/jpg" href="assets/images/stark.jpg">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<div  class="title-div">
+	<p class="main-title">Game of Thrones</p>
+	<p class="sub-title">The RPG</p>
+</div>
+<div class="billboard">
+	<p>Click to select a Champion</p>
+</div>
+<div class="arena">
+	<div class="holding-area">
+		<div class="snow-div fighter-img-div">
+			<img class="snow-img holding-img" src="assets/images/snow.png">
+		</div>
+		<div class="night-king-div fighter-img-div">
+			<img class="king-img holding-img" src="assets/images/nightking.png">
+		</div>
+		
+		<div class="tarth-div fighter-img-div">
+			<img class="tarth-img holding-img" src="assets/images/brienne.png">
+		</div>
+		<div class="oberyn-div fighter-img-div">
+			<img class="oberyn-img holding-img" src="assets/images/oberyn.png">
+		</div>
+		
+	</div>
+	<div class="battleground">
+		<div class="user-fighter">
+			<div class="user-details">
+				<p class="battleground-title">Champion</p>
+				<p class="stats">Health: <span class="current-user-hp">100 </span></p>
+				<p class="stats">Attack: <span class="current-user-atk">100 </span></p> 
+				<div class="user-img-div">
+					<img class="current-user-img battleground-img" src="assets/images/oberyn.png">
+				</div>
+			</div>
+		</div>
+		
+		<div class="btn-div">
+			<!-- <button class="atk-btn" type="button" autofocus>ATTACK!</button> -->
+			<p class="atk-txt">ATTACK!</p>
+		</div>
+
+		<div class="enemy-fighter">
+			<div class="enemy-details">
+				<p class="battleground-title">Challenger</p>
+				<p class="stats">Health: <span class="current-enemy-hp">100 </span></p>
+				<p class="stats">Attack: <span class="current-enemy-atk">100 </span></p> 
+				<div class="enemy-img-div">
+					<img class="enemy-img battleground-img" src="assets/images/nightking.png">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>
