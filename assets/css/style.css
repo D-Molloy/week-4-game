@@ -3,41 +3,62 @@
 @font-face { font-family: Thrones; src: url('../thrones.ttf'); } 
 
 body {
-	font-family: Thrones;
+	font-family: Thrones, sans-serif;
 	color: #FFF;
 	background: url("../images/throne.png");
-	z-index: 0;
-
 }
 
-.main-title, .sub-title, .billboard {
+.main-title,
+.sub-title,
+.select-champ,
+.user-text,
+.enemy-text {
 	text-align: center;
+	margin: 0;
 }
+
+.select-champ,
+.user-text,
+.enemy-text {
+	text-align: center;
+	margin: 10px 0 0 0;
+}
+
 
 .main-title {
-	font-size: 40px;
+	font-size: 50px;
 	margin-top: 10px;
 	margin-bottom: 0px;
 }
 
 .sub-title {
-	font-size: 20px;
-	margin-top: 5px;
-	margin-bottom: 0px;
+	font-size: 20px;\
+	margin-bottom: 5px;
+	border-bottom: 2px solid #F6F6F6;
+	width: 100%;
+
 }
 
 .billboard {
+	display: flex;
+	justify-content: space-around;
 	font-size: 20px;
-	margin: 5px 0 5px 0;
+	margin: 0;
 }
 
-.arena, .holding-area, .battleground {
+.select-champ, .user-text, .enemy-text {
+	width: 30%;
+}
 
+
+.arena,
+.holding-area,
+.battleground {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	z-index: 2;
 }
+
 
 .holding-area {
 	width: 30%;
@@ -45,9 +66,12 @@ body {
 	background: rgba(101, 107, 103, .75); 
 }
 
+
+
 .holding-img {
+
 	max-width: 200px;
-	margin: 5px;
+	/*margin: 5px;*/
 	border: 2px groove #FFF;
 }
 
@@ -61,49 +85,68 @@ body {
 }
 
 
-.btn-div{
-	/*display: flex;*/
-	align-content: center;
-	background: #000;
-	height: 40%;
+.btn-div {
+	display:flex;
+	height: 20%;
 }
 
-.btn-div:hover {
-	background: #F00;
-	border: 5px outset #FFF;
 
+@keyframes changeColor {
+  0% {
+    background-color: #F6F6F6;
+  }
+  
+  50% {
+    background-color: #ff0000;
+  }
+  
+  100% {
+    background-color: #F6F6F6;
+  }
 }
+
 
 .atk-btn{
 	height:100%;
+	border-radius: 30px;
 }
 
-.atk-txt {
-	font-size: 10px;
-	margin: 0;
-	padding: 0;
+.atk-btn:hover {
+	animation: changeColor ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-fill-mode: both;
 }
+
+
+
 
 .user-fighter, .enemy-fighter {
 	display: flex;
 	justify-content: center;
 	width: 45%;
-	border: 5px groove #FFF;
+	border: 2px groove #FFF;
 }
 
 .battleground-title, .stats {
 	text-align: center;
 }
 
+
 .battleground-title {
 	font-size: 20px;
+}
+
+.user-img-div, .enemy-img-div{
+  height: 450px;
+  /*width: 300px*/
 }
 
 .battleground-img {
 	display: block;
 	margin: 0 auto;
 	width: 100%;
-	min-width: 300px;
+	/*min-width: 300px;*/
 }
 
 .stats {
