@@ -4,7 +4,7 @@ $(document).ready(function() {
   var jonSnow = {
     name:"Jon Snow",
     health: 1000,
-    baseAttack: 5,
+    baseAttack: 50,
     attackPower: 5,
     counterAttack: 20,
     playerDiv: ".snow-div",
@@ -41,20 +41,19 @@ $(document).ready(function() {
   var userFighter;
   var enemyFighter;
   var winCount = 0;
-
-  // Gets Link for Theme Song
   var audioElement = document.createElement("audio");
-  audioElement.setAttribute("src", "assets/audio/theme.mp3");
 
-  // Play and pause the theme by clicking on the main and subtitle respectively
-  $(".main-title").click( function() {
-  audioElement.play();
-  });
 
-  $(".sub-title").click( function() {
-  audioElement.pause();
-  });
-
+  function winState(){
+        audioElement.setAttribute("src", "assets/audio/theme.mp3");
+        audioElement.play();
+        $('.arena').css('display', 'none');
+        $('.billboard').css('display', 'none');
+        $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
+        $('.title-popup').css('font-size', '50px').html('The&nbsp  Iron&nbsp  Throne&nbsp  is&nbsp  yours');
+        $('.p-popup').text('press n to start a new game');
+        $('.popup').fadeIn(6000);
+  }
 
 
   // control adding Brienne to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
@@ -112,7 +111,7 @@ $(document).ready(function() {
     } 
   })
 
-  // control adding The Night King to either user-img-div or enemy-img-div and updating stats
+  // control adding The Night King to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
   $(".night-king-div").click(function() {
     if (userFighter == undefined) {
       $(".night-king-div").appendTo( $(".user-img-div"));
@@ -130,31 +129,20 @@ $(document).ready(function() {
     } 
   })
 
-
-  // var userFighter enemyFighter= {
-    // name:"The Night King",
-    // health: 150,
-    // baseAttack: 20,
-    // attackPower: 20,
-    // counterAttack: 20,
-  // };
-
-  // div class="billboard">
-  // <p class="select-champ">Click to select a Champion</p>
-  // <p class="user-text">User Attack Text</p>
-  // <p class="enemy-text">Enemy Attack Text</p>
-
+// decide what happens when the button is clicked
   $(".atk-btn").click(function() {
-        if (userFighter !== undefined && enemyFighter !== undefined){
-
-      //user attack
+    //if both characters have been selected, execute the code below
+    if (userFighter !== undefined && enemyFighter !== undefined){
+      audioElement.setAttribute("src", "assets/audio/sword.wav");
+      audioElement.play();
+      //calculate user attack and damage done
       enemyFighter.health = enemyFighter.health - userFighter.attackPower;
       userFighter.attackPower = userFighter.attackPower + userFighter.baseAttack;
       $(".current-enemy-hp").text(enemyFighter.health);
       $(".current-user-atk").text(userFighter.attackPower);
       $(".user-text").text("You inflicted " + userFighter.attackPower + " damage on " + enemyFighter.name);
 
-      //enemy attack        
+      // calculate enemy attack        
       userFighter.health = userFighter.health - enemyFighter.counterAttack;
       $(".current-user-hp").text(userFighter.health);
       $(".enemy-text").text(enemyFighter.name + " inflicted " + enemyFighter.counterAttack + " damage on you.");
@@ -162,27 +150,33 @@ $(document).ready(function() {
       //monitor for a win or loss
       if (userFighter.health <= 0) {
         alert("You lose.");
+        audioElement.setAttribute("src", "assets/audio/scream.mp3");
+        audioElement.play();  
         //create lose screen
       } else if (enemyFighter.health <= 0){
-        //process a win        
+        //process a win
+        audioElement.setAttribute("src", "assets/audio/scream.mp3");
+        audioElement.play();        
         $(enemyFighter.playerDiv).detach();
         $(".current-enemy-hp").text(" ");
         $(".current-enemy-atk").text(" ");
-        $(".select-champ").text(" ");
+        $(".select-champ").text("Select your next opponent");
         $(".user-text").text(" ");
-        $(".enemy-text").text("Select your next opponent");
+        $(".enemy-text").text("");
         winCount++;
-        if (winCount == 3){
-          alert("You win.");
+        //change to 3 once debugging is done
+        if (winCount == 1){
+          // alert("You win.");
+          // $('.arena').css('display', 'none');
+          // $('.popup').hide();
+          // $('.h1-popup').text('You are victorious');
+          // $('.p-popup').text('press n to start a new game');
+          // $('.popup').fadeIn(3000);
+          winState();
+
         }
         enemyFighter = undefined;
-      }
-
-      
+      }     
     }
-
   })
-
-
-
 });
