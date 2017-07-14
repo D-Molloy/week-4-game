@@ -148,12 +148,12 @@ body {
   width: 100%;
 }
 
-.battleground-img {
+/*.battleground-img {
 	display: block;
 	margin: 0 auto;
 	width: 100%;
-	/*min-width: 300px;*/
-}
+	/*min-width: 300px;
+}*/
 
 .stats {
 	border-top: 2px solid #656b67;
@@ -170,6 +170,12 @@ body {
 .current-enemy-hp {
 	font-size: 25px;
 	color: #00FF00;
+}
+
+.user-text,
+.enemy-text {
+	font-family: Georgia, serif;
+	color: red;
 }
 
 

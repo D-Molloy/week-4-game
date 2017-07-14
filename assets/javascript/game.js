@@ -3,37 +3,37 @@ $(document).ready(function() {
 
   var jonSnow = {
     name:"Jon Snow",
-    health: 1000,
-    baseAttack: 50,
-    attackPower: 5,
+    health: 200,
+    baseAttack: 6,
+    attackPower: 6,
     counterAttack: 20,
     playerDiv: ".snow-div",
   };
 
   var briTarth = {
     name:"Brienne of Tarth",
-    health: 100,
+    health: 180,
     baseAttack: 10,
     attackPower: 10,
-    counterAttack: 30,
+    counterAttack: 13,
     playerDiv: ".tarth-div",
   };
 
   var oberyn = {
     name:"Oberyn Martell",
-    health: 150,
-    baseAttack: 20,
-    attackPower: 20,
-    counterAttack: 40,
+    health: 160,
+    baseAttack: 12,
+    attackPower: 12,
+    counterAttack: 15,
     playerDiv: ".oberyn-div",
   };
 
   var king = {
     name:"The Night King",
-    health: 150,
-    baseAttack: 20,
-    attackPower: 20,
-    counterAttack: 20,
+    health: 200,
+    baseAttack: 8,
+    attackPower: 8,
+    counterAttack: 15,
     playerDiv: ".night-king-div",
   };
 
@@ -41,20 +41,58 @@ $(document).ready(function() {
   var userFighter;
   var enemyFighter;
   var winCount = 0;
+  var chickenDinner = true;
   var audioElement = document.createElement("audio");
+  
+
+  // function resetGame(){
+  //   userFighter = undefined;
+  //   enemyFighter = undefined;
+  //   winCount = 0;
+  //   chickenDinner = true;
+
+  //   $('.title-popup').css().html();
+  //   $('.title-popup').html('');
+  //   $('.p-popup').text();
+  //   $('.arena').css('display', 'inline');
+  //   $('.billboard').css('display', 'inline');
+  //   $('.popup').css();
+  //   // $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
+  //   // $(".tarth-div").appendTo( $(".holding-area"));
+  //   // $('.popup').fadeIn(6000);
+
+  // }
+
+  // $('.p-popup').click(function(){
+  //           resetGame();
+  //         });
 
 
   function winState(){
-        audioElement.setAttribute("src", "assets/audio/theme.mp3");
-        audioElement.play();
-        $('.arena').css('display', 'none');
-        $('.billboard').css('display', 'none');
-        $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
-        $('.title-popup').css('font-size', '50px').html('The&nbsp  Iron&nbsp  Throne&nbsp  is&nbsp  yours');
-        $('.p-popup').text('press n to start a new game');
-        $('.popup').fadeIn(6000);
+    audioElement.setAttribute("src", "assets/audio/theme.mp3");
+    audioElement.play();
+
+    if (chickenDinner === false) {
+      $('.arena').css('display', 'none');
+      $('.billboard').css('display', 'none');
+      $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
+      $('.title-popup').css({'font-size':'40px', 'color':'red'}).html('You&nbsp  Have&nbsp  Perished...&nbspall&nbsp hope&nbsp is&nbsp lost&nbsp');
+      $('.p-popup').text('click here to start a new game');
+      $('.popup').fadeIn(6000);
+      
+    } else {
+
+      $('.arena').css('display', 'none');
+      $('.billboard').css('display', 'none');
+      $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
+      $('.title-popup').css('font-size', '50px').html('The&nbsp  Iron&nbsp  Throne&nbsp  is&nbsp  yours');
+      $('.p-popup').text('click here to start a new game');
+      $('.popup').fadeIn(6000);
+       
+    }  
   }
 
+  
 
   // control adding Brienne to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
   $(".tarth-div").click(function() {
@@ -149,14 +187,15 @@ $(document).ready(function() {
       
       //monitor for a win or loss
       if (userFighter.health <= 0) {
-        alert("You lose.");
+        chickenDinner = false;
         audioElement.setAttribute("src", "assets/audio/scream.mp3");
-        audioElement.play();  
+        audioElement.play();
+        winState();
         //create lose screen
       } else if (enemyFighter.health <= 0){
         //process a win
         audioElement.setAttribute("src", "assets/audio/scream.mp3");
-        audioElement.play();        
+        audioElement.play();      
         $(enemyFighter.playerDiv).detach();
         $(".current-enemy-hp").text(" ");
         $(".current-enemy-atk").text(" ");
@@ -165,13 +204,8 @@ $(document).ready(function() {
         $(".enemy-text").text("");
         winCount++;
         //change to 3 once debugging is done
-        if (winCount == 1){
-          // alert("You win.");
-          // $('.arena').css('display', 'none');
-          // $('.popup').hide();
-          // $('.h1-popup').text('You are victorious');
-          // $('.p-popup').text('press n to start a new game');
-          // $('.popup').fadeIn(3000);
+        if (winCount == 3){
+          
           winState();
 
         }
