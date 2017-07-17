@@ -1,13 +1,14 @@
 
 $(document).ready(function() {
-
+  
+  //create objects for each of the combatants and their traits
   var jonSnow = {
     name:"Jon Snow",
     health: 200,
     baseAttack: 6,
     attackPower: 6,
     counterAttack: 20,
-    playerDiv: ".snow-div",
+    playerClass: ".snow-div",
   };
 
   var briTarth = {
@@ -16,7 +17,7 @@ $(document).ready(function() {
     baseAttack: 10,
     attackPower: 10,
     counterAttack: 13,
-    playerDiv: ".tarth-div",
+    playerClass: ".tarth-div",
   };
 
   var oberyn = {
@@ -25,7 +26,7 @@ $(document).ready(function() {
     baseAttack: 12,
     attackPower: 12,
     counterAttack: 15,
-    playerDiv: ".oberyn-div",
+    playerClass: ".oberyn-div",
   };
 
   var king = {
@@ -34,44 +35,24 @@ $(document).ready(function() {
     baseAttack: 8,
     attackPower: 8,
     counterAttack: 15,
-    playerDiv: ".night-king-div",
+    playerClass: ".night-king-div",
   };
 
-
+  //global variables
   var userFighter;
   var enemyFighter;
   var winCount = 0;
   var chickenDinner = true;
   var audioElement = document.createElement("audio");
-  
 
-  // function resetGame(){
-  //   userFighter = undefined;
-  //   enemyFighter = undefined;
-  //   winCount = 0;
-  //   chickenDinner = true;
-
-  //   $('.title-popup').css().html();
-  //   $('.title-popup').html('');
-  //   $('.p-popup').text();
-  //   $('.arena').css('display', 'inline');
-  //   $('.billboard').css('display', 'inline');
-  //   $('.popup').css();
-  //   // $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
-  //   // $(".tarth-div").appendTo( $(".holding-area"));
-  //   // $('.popup').fadeIn(6000);
-
-  // }
-
-  // $('.p-popup').click(function(){
-  //           resetGame();
-  //         });
-
-
-  function winState(){
+  //the function that runs once the user character dies or all enemies are defeated
+  function gameOver() {
+    
+    //play the GoT theme
     audioElement.setAttribute("src", "assets/audio/theme.mp3");
     audioElement.play();
-
+    
+    //if the player loses, hide the arena and billboard divs and show the losing screen
     if (chickenDinner === false) {
       $('.arena').css('display', 'none');
       $('.billboard').css('display', 'none');
@@ -79,9 +60,9 @@ $(document).ready(function() {
       $('.title-popup').css({'font-size':'40px', 'color':'red'}).html('You&nbsp  Have&nbsp  Perished...&nbspall&nbsp hope&nbsp is&nbsp lost&nbsp');
       $('.p-popup').text('click here to start a new game');
       $('.popup').fadeIn(6000);
-      
     } else {
-
+      
+      //if the player wins, hide the arena and billboard divs and show the winning screen
       $('.arena').css('display', 'none');
       $('.billboard').css('display', 'none');
       $('.popup').hide().css({'margin-top': '10%', 'text-align': 'center'});
@@ -91,8 +72,6 @@ $(document).ready(function() {
        
     }  
   }
-
-  
 
   // control adding Brienne to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
   $(".tarth-div").click(function() {
@@ -110,8 +89,7 @@ $(document).ready(function() {
       $(".select-champ").text(" ")
       enemyFighter = briTarth;
     } 
-  })
-
+  });
 
   // control adding Jon to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
   $(".snow-div").click(function() {
@@ -129,7 +107,7 @@ $(document).ready(function() {
       $(".select-champ").text(" ")
       enemyFighter = jonSnow;
     } 
-  })
+  });
 
   // control adding Oberyn to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
   $(".oberyn-div").click(function() {
@@ -147,7 +125,7 @@ $(document).ready(function() {
       $(".select-champ").text(" ")
       enemyFighter = oberyn;
     } 
-  })
+  });
 
   // control adding The Night King to either user-img-div or enemy-img-div, printing stats to HTML and assigning to either userFighter or enemy fighter depending on the outcome of the if statement
   $(".night-king-div").click(function() {
@@ -165,52 +143,51 @@ $(document).ready(function() {
       $(".select-champ").text(" ")
       enemyFighter = king;
     } 
-  })
+  });
 
 // decide what happens when the button is clicked
   $(".atk-btn").click(function() {
+    
     //if both characters have been selected, execute the code below
     if (userFighter !== undefined && enemyFighter !== undefined){
       audioElement.setAttribute("src", "assets/audio/sword.wav");
       audioElement.play();
+      
       //calculate user attack and damage done
       enemyFighter.health = enemyFighter.health - userFighter.attackPower;
       userFighter.attackPower = userFighter.attackPower + userFighter.baseAttack;
       $(".current-enemy-hp").text(enemyFighter.health);
       $(".current-user-atk").text(userFighter.attackPower);
       $(".user-text").text("You inflicted " + userFighter.attackPower + " damage on " + enemyFighter.name);
-
+      
       // calculate enemy attack        
       userFighter.health = userFighter.health - enemyFighter.counterAttack;
       $(".current-user-hp").text(userFighter.health);
       $(".enemy-text").text(enemyFighter.name + " inflicted " + enemyFighter.counterAttack + " damage on you.");
       
-      //monitor for a win or loss
+      //if the user character runs out of health he will not get a chicken dinner and gameOver() is called
       if (userFighter.health <= 0) {
         chickenDinner = false;
-        audioElement.setAttribute("src", "assets/audio/scream.mp3");
-        audioElement.play();
-        winState();
-        //create lose screen
+        gameOver();
       } else if (enemyFighter.health <= 0){
-        //process a win
+        
+        //if the enemy character is killed, remove it from the enemy-fighter div, play the Wilhelm scream, set enemyFighter to undefined(allowing the user to select a new enemy), prompt the user to pick a new character, and increment winCount, also the user earns a chicken dinner (chickenDinner stays == true)
         audioElement.setAttribute("src", "assets/audio/scream.mp3");
         audioElement.play();      
-        $(enemyFighter.playerDiv).detach();
+        $(enemyFighter.playerClass).detach();
         $(".current-enemy-hp").text(" ");
         $(".current-enemy-atk").text(" ");
         $(".select-champ").text("Select your next opponent");
         $(".user-text").text(" ");
         $(".enemy-text").text("");
-        winCount++;
-        //change to 3 once debugging is done
-        if (winCount == 3){
-          
-          winState();
-
-        }
         enemyFighter = undefined;
+        winCount++;
+        
+        // if winCount === 3 then all opponents have been defeated and gameOver() is called
+        if (winCount == 3){
+          gameOver();
+        }
       }     
     }
-  })
+  });
 });

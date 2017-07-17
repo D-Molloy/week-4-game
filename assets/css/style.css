@@ -1,4 +1,3 @@
-/** {border: 1px solid black;}*/
 
 @font-face { font-family: Thrones; src: url('../thrones.ttf'); } 
 
@@ -46,7 +45,9 @@ body {
 	margin: 0;
 }
 
-.select-champ, .user-text, .enemy-text {
+.select-champ, 
+.user-text, 
+.enemy-text {
 	width: 30%;
 }
 
@@ -63,21 +64,17 @@ body {
 .holding-area {
 	width: 30%;
 	border: 5px groove #FFF;
-	background: rgba(101, 107, 103, .75); 
+	background: rgba(101, 107, 103, .9); 
 }
 
 
 .popup {
 	position: absolute;
-	/*background: rgba(101, 107, 103, .5);*/
 	width: 100%;
-	/*margin-top: 50%;*/
-	/*height: 50%*/
 }
 
 .holding-img {
 	max-width: 200px;
-	/*margin: 5px;*/
 	border: 2px groove #FFF;
 }
 
@@ -85,9 +82,10 @@ body {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: 60%;	
+	width: 60%;
+	/*max-height: 600px;*/
 	border: 5px groove #FFF;
-	background: rgba(101, 107, 103, .75); 
+	background: rgba(101, 107, 103, .9); 
 }
 
 
@@ -96,7 +94,7 @@ body {
 	height: 20%;
 }
 
-
+/* create the animation used for hovering over the attack button*/
 @keyframes changeColor {
   0% {
     background-color: #F6F6F6;
@@ -113,10 +111,11 @@ body {
 
 
 .atk-btn{
-	height:100%;
-	border-radius: 30px;
+	height: 70px;
+	border-radius: 40px;
 }
 
+/*initiate the animation on the attack button*/
 .atk-btn:hover {
 	animation: changeColor ease-out;
     animation-iteration-count: infinite;
@@ -125,16 +124,16 @@ body {
 }
 
 
-
-
-.user-fighter, .enemy-fighter {
+.user-fighter,
+.enemy-fighter {
 	display: flex;
 	justify-content: center;
 	width: 45%;
 	border: 2px groove #FFF;
 }
 
-.battleground-title, .stats {
+.battleground-title, 
+.stats {
 	text-align: center;
 }
 
@@ -143,17 +142,11 @@ body {
 	font-size: 20px;
 }
 
-.user-img-div, .enemy-img-div{
-  /*height: 450px;*/
+.user-img-div, 
+.enemy-img-div {
   width: 100%;
 }
 
-/*.battleground-img {
-	display: block;
-	margin: 0 auto;
-	width: 100%;
-	/*min-width: 300px;
-}*/
 
 .stats {
 	border-top: 2px solid #656b67;

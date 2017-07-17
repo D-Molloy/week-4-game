@@ -1,79 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Game of Thrones</title>
-	<link rel="shortcut icon" type="img/jpg" href="assets/images/stark.jpg">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="https://code.jquery.com/jquery.js"></script>
-</head>
-<body>
-	<div class="title-div">
-		<p class="main-title">Game&nbsp of &nbspThrones</p>
-		<p class="sub-title">The &nbsp RPG</p>
-	</div>
-
-	<div class="popup">
-		<p class="title-popup"></p>
-		<!-- <p class="p-popup" style="cursor:pointer"></p> -->
-		<div class="billboard">
-			<p class="select-champ">Click to select a Champion</p>
-			<p class="user-text"></p>
-			<p class="enemy-text"></p>
+	<head>
+		<title>Game of Thrones</title>
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="img/jpg" href="assets/images/stark.jpg">
+		<!-- link to CSS -->
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<!-- link to jQuery -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+	</head>
+	<body>
+		<!-- div containing the the title treatment -->
+		<div class="title-div">
+			<p class="main-title">Game&nbsp of &nbspThrones</p>
+			<p class="sub-title">The &nbsp RPG</p>
 		</div>
-
-		<div class="arena">
-			
-			<div class="holding-area">
-				
-				<div class="tarth-div fighter-img-div">
-					<img class="tarth-img holding-img" src="assets/images/brienne.png">
-				</div>
-				<div class="snow-div fighter-img-div">
-					<img class="snow-img holding-img" src="assets/images/snow.png">
-				</div>
-				<div class="oberyn-div fighter-img-div">
-					<img class="oberyn-img holding-img" src="assets/images/oberyn.png">
-				</div>
-				<div class="night-king-div fighter-img-div">
-					<img class="king-img holding-img" src="assets/images/nightking.png">
-				</div>
-				
+		<!-- A div used to display the win/lose screens.  When this is displayed the billboard and arena divs are set to display: none .-->
+		<div class="popup">
+			<p class="title-popup"></p>
+			<!-- 3 p tags used to display messages the user -->
+			<div class="billboard">
+				<p class="select-champ">Click to select a Champion</p>
+				<p class="user-text"></p>
+				<p class="enemy-text"></p>
 			</div>
-			
-			<div class="battleground">
-				<div class="user-fighter">
-					<div class="user-details">
-						<p class="battleground-title">Champion</p>
-						<p class="stats">Health&nbsp <span class="current-user-hp"></span></p>
-						<p class="stats">Attack&nbsp <span class="current-user-atk"></span></p>
-						<div class="user-img-div">
-							<!-- <img class="current-user-img battleground-img" src=""> -->
-							<!-- assets/images/snow.png -->
-						</div>
+			<div class="arena">
+				<!-- div that initially holds all combatants -->
+				<div class="holding-area">
+					<div class="tarth-div">
+						<img class="tarth-img holding-img" src="assets/images/brienne.png">
+					</div>
+					<div class="snow-div">
+						<img class="snow-img holding-img" src="assets/images/snow.png">
+					</div>
+					<div class="oberyn-div">
+						<img class="oberyn-img holding-img" src="assets/images/oberyn.png">
+					</div>
+					<div class="night-king-div">
+						<img class="king-img holding-img" src="assets/images/nightking.png">
 					</div>
 				</div>
-				
-				<div class="btn-div">
-					<button class="atk-btn" type="button">ATTACK!</button>
-					
-				</div>
-
-				<div class="enemy-fighter">
-					<div class="enemy-details">
-						<p class="battleground-title">Challenger</p>
-						<p class="stats">Health&nbsp <span class="current-enemy-hp"></span></p>
-						<p class="stats">Attack&nbsp <span class="current-enemy-atk"></span></p> 
-						<div class="enemy-img-div">
-							<!-- <img class="enemy-img battleground-img" src=> -->
-							<!-- assets/images/nightking.png -->
+				<!-- div where all the action takes place -->
+				<div class="battleground">
+					<!-- the Champion div -->
+					<div class="user-fighter">
+						<div class="user-details">
+							<p class="battleground-title">Champion</p>
+							<p class="stats">Health&nbsp <span class="current-user-hp"></span></p>
+							<p class="stats">Attack&nbsp <span class="current-user-atk"></span></p>
+							<div class="user-img-div">
+							</div>
+						</div>
+					</div>
+					<!-- attack button -->
+					<div class="btn-div">
+						<button class="atk-btn" type="button">ATTACK!</button>
+					</div>
+					<!-- the Challenger div -->
+					<div class="enemy-fighter">
+						<div class="enemy-details">
+							<p class="battleground-title">Challenger</p>
+							<p class="stats">Health&nbsp <span class="current-enemy-hp"></span></p>
+							<p class="stats">Attack&nbsp <span class="current-enemy-atk"></span></p>
+							<div class="enemy-img-div">
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-<script type="text/javascript" src="assets/javascript/game.js"></script>
-</body>
+		<!-- link to JS file -->
+		<script type="text/javascript" src="assets/javascript/game.js"></script>
+	</body>
 </html>
